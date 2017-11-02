@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Cinema.Models {
-    public class tmdb {
+    public class Tmdb {
         const string tmdbUrl = "https://api.themoviedb.org/3/movie/";
         const string tmdbSearchUrl = "https://api.themoviedb.org/3/search/movie";
-        const string tmdbFindIdUrl = "https://api.themoviedb.org/3/search/movie";
-        public movie newMovie; // Initialize movie object
+        public Movie newMovie; // Initialize movie object
         const string apiKey = "66195db594b6fa3cea5439900dd38335";
 
 
@@ -26,13 +25,10 @@ namespace Cinema.Models {
                 foreach (var station in jsonObject.results) {
                     result.Add(station.title.ToString());
                 }
-
                 return result;
             }
             //http://stackoverflow.com/questions/36482299/how-do-i-select-same-name-json-objects-c-sharp-asp-net
         }
-
-
 
         public static List<string> GetMoviePosters(string imdb_id) {
             using (WebClient wc = new WebClient()) {
@@ -49,21 +45,21 @@ namespace Cinema.Models {
 
         public string GetMovieId(string name) {
             using (WebClient wc = new WebClient()) {
-                var findMovieId = wc.DownloadString(tmdbFindIdUrl + "?api_key=" + apiKey + "&query=" + name);
+                var findMovieId = wc.DownloadString(tmdbSearchUrl + "?api_key=" + apiKey + "&query=" + name);
                 var movieId = JObject.Parse(findMovieId)["results"][0]["id"];
                 name = movieId.ToString();
                 return name;
             }
         }
 
-        public async Task<movie> GetMovie(string query) {
+        public async Task<Movie> GetMovie(string query) {
             using (var client = new HttpClient()) {
                 client.BaseAddress = new Uri(tmdbUrl);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 HttpResponseMessage response = await client.GetAsync(tmdbUrl + query + "?api_key=" + apiKey);
                 if (response.IsSuccessStatusCode) {
-                    newMovie = await response.Content.ReadAsAsync<movie>();
+                    newMovie = await response.Content.ReadAsAsync<Movie>();
 
                     return newMovie;
                 } else {
