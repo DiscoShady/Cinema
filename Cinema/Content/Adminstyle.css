@@ -1,0 +1,56 @@
+﻿
+body {
+    background-color: #D64F46;
+    min-width: 200px;
+}
+
+.container {
+    background-color: #FFF;
+    min-height: 100%;
+}
+
+.no-phone {
+    display: block;
+    border-right: 1px solid #eee;
+}
+
+
+.opt-panel {
+    margin-top: 10px;
+}
+
+.custom-icon, .custom-icon-text {
+    color: #252527;
+}
+
+.custom-icon {
+    font-size: 30px;
+}
+
+.custom-icon-text:hover {
+    color: #33A5D5;
+}
+
+.custom-icon:hover {
+    color: #33A5D5;
+}
+
+.custom-icon-link {
+    text-decoration: none;
+}
+
+@media (max-width: 500px) {
+    .no-phone {
+        display: none;
+    }
+}
+
+.panel-default > .panel-heading, .navbar-default, .navbar-default .navbar-brand,
+.navbar-nav > li > a {
+    background-color: #474747;
+    color: white !important;
+}
+
+    .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover, .navbar-nav > li > a:hover {
+        background-color: #33A5D5 !important;
+    }
