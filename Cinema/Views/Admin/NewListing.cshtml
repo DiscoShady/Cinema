@@ -1,0 +1,120 @@
+﻿@model Cinema.Models.MovieViewModel
+
+@{
+    ViewBag.Title = "NewListing";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>NewListing</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Title">Title</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Title" name="Title" type="text" value="@Model.Movie.Title" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Trailers</label>
+            <div class="col-md-10">
+                @foreach (var t in Model.Trailer) {
+                    <iframe width="280" height="180" src="https://www.youtube.com/embed/@t.key" frameborder="0" allowfullscreen></iframe>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Status">Status</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Status" name="Status" type="text" value="@Model.Movie.Status" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Status" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Tagline">Tagline</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Tagline" name="Tagline" type="text" value="@Model.Movie.Tagline" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Tagline" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Runtime">Runtime</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field Runtime must be a number." data-val-required="Feltet Runtime skal udfyldes." id="Runtime" name="Runtime" type="number" value="@Model.Movie.Runtime" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Runtime" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Release_date">Release_date</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Release_date" name="Release_date" type="text" value="@Model.Movie.Release_date" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Release_date" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Poster_path">Poster_path</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Poster_path" name="Poster_path" type="text" value="@Model.Movie.Poster_path" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Poster_path" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Overview">Overview</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="Overview" name="Overview">@Model.Movie.Overview</textarea>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Overview" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Original_language">Original_language</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Original_language" name="Original_language" type="text" value="@Model.Movie.Original_language" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Original_language" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Imdb_id">Imdb_id</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Imdb_id" name="Imdb_id" type="text" value="@Model.Movie.Imdb_id" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="Imdb_id" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label class="control-label col-md-2" for="Backdrop_path">Backdrop_path</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="Backdrop_path" name="Backdrop_path" type="text" value="" />
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Backdrop_path" data-valmsg-replace="true"></span>
+                </div>
+            </div>*@
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

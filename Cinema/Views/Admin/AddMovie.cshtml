@@ -1,0 +1,33 @@
+﻿@using Cinema.Extensions;
+@model IEnumerable<Cinema.Models.Movie>
+@{
+    ViewBag.Title = "AddMovie";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("AddMovie", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+    <input type="text" name="searchString" class="form-control" placeholder="Enter a movie or series title here" />
+    <br />
+
+    <input type="submit" value="OK" />
+}
+
+@if (ViewBag.ResultStatus == "OK") {
+    <div class="movie-results container">
+        <div class="row">
+            @foreach (var m in Model) {
+                <div class="col-md-4">
+                    <div class="poster">
+                        <img src="https://image.tmdb.org/t/p/w185/@m.Poster_path" alt="Poster for @m.Title (@m.Release_date)" />
+                    </div>
+                    <div class="movie-title caption"><h4><a href="NewListing?Title=@Helper.ReplaceAllSpaces(m.Title)">@m.Title</a></h4></div>
+                </div>
+            }
+
+            @if (ViewBag.ResultStatus == "ERR") {
+                <h1>Movie not found.</h1>
+            }
+        </div>
+    </div>
+}
+

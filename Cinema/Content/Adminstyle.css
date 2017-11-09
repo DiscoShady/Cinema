@@ -1,7 +1,10 @@
 ﻿
 body {
-    background-color: #D64F46;
+    background: #16181e;
     min-width: 200px;
+    color: #fcfcfc;
+    font-family: sans-serif;
+    font-weight: lighter;
 }
 
 .container {
@@ -54,3 +57,5 @@ body {
     .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover, .navbar-nav > li > a:hover {
         background-color: #33A5D5 !important;
     }
+
+
