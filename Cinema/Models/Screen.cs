@@ -11,7 +11,7 @@ namespace Cinema.Models{
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        //seats model
+        public ICollection<Seat> Seat { get; set; }
         public string SoundSystem { get; set; }
         public string OtherInfo { get; set; }
         public bool IMAX { get; set; } //IMAX screen. Default to false.

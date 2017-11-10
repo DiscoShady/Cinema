@@ -24,6 +24,7 @@ namespace Cinema.Models {
         public DbSet<Cast> Casts { get; set; }
         public DbSet<Screen> Screens { get; set; }
         public DbSet<Listing> Listings { get; set; }
+        public DbSet<Seat> Seats { get; set; }
 
         public static ApplicationDbContext Create() {
             return new ApplicationDbContext();

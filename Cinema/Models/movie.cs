@@ -4,11 +4,6 @@ using System.Collections.Generic;
 
 namespace Cinema.Models {
 
-    public class MovieViewModel {
-        public Movie Movie { get; set; }
-        public List<Trailer> Trailer { get; set; }
-    }
-
     public class Movie {
         public Movie() {
             AddedToDb = DateTime.Now;
