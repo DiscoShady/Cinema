@@ -22,6 +22,7 @@ namespace Cinema.Models {
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Cast> Casts { get; set; }
+        public DbSet<Screen> Screens { get; set; }
 
         public static ApplicationDbContext Create() {
             return new ApplicationDbContext();
